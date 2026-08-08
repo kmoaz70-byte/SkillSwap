@@ -1,0 +1,27 @@
+﻿@using Models.Enums
+@using Models.ViewModels
+@model SwapRequestCreateViewModel
+<div class="container mt-4 fade-in">
+<h2>Request a Skill Swap</h2>
+<p>You are requesting <strong>@Model.ReceiverSkillName</strong> from <strong>@Model.ReceiverName</strong>.</p>
+
+<form asp-controller="Swap" asp-action="Request" method="post">
+    <input type="hidden" asp-for="ReceiverId" />
+    <input type="hidden" asp-for="ReceiverSkillId" />
+   
+
+    <div class="mb-3">
+        <label class="form-label">Offer one of your skills in return</label>
+        <select asp-for="RequesterSkillId" asp-items="Model.MyOfferingSkills" class="form-select">
+            <option value="">-- Select a skill --</option>
+        </select>
+    </div>
+  
+    <div class="mb-3">
+        <label class="form-label">Message (optional)</label>
+        <textarea asp-for="Message" class="form-control" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send Request</button>
+</form>
+</div>

@@ -1,0 +1,26 @@
+﻿@model Models.ViewModels.SuggestSkillViewModel
+@{
+    ViewData["Title"] = "Suggest a Skill";
+}
+
+<h2>Suggest a New Skill</h2>
+<p class="text-muted">Your suggestion will be reviewed by an admin before it appears in the skill list.</p>
+
+<form asp-action="SuggestSkill" method="post">
+    <div class="mb-3">
+        <label class="form-label">Skill Name</label>
+        <input asp-for="Name" class="form-control" placeholder="e.g. Photography" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select asp-for="Category" class="form-select"
+                asp-items="Html.GetEnumSelectList<Models.Enums.SkillCategory>()">
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

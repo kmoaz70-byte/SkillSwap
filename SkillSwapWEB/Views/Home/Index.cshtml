@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<header class="hero" id="top">
+    <div class="container">
+        <div class="hero-inner text-center mx-auto" data-reveal>
+            <span class="badge-pill">
+                <span class="dot"></span> Now with smart skill matching
+            </span>
+
+            <h1 class="hero-title">
+                Learn anything,<br />
+                <span class="gradient-text">teach what you know</span>
+            </h1>
+
+            <p class="hero-sub">
+                Trade skills with real people — no money changes hands, just knowledge.
+                Teach guitar, learn Photoshop. Teach cooking, learn Spanish.
+            </p>
+
+            <div class="hero-ctas">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-gradient btn-lg">
+                    Start Swapping
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                </a>
+                <a href="#how" class="btn btn-outline-ghost btn-lg">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                    See how it works
+                </a>
+            </div>
+        </div>
+        <div class="stats-row" data-reveal>
+            <div class="stat">
+                <div class="stat-num">5k+</div>
+                <div class="stat-label">Active swappers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">1,200+</div>
+                <div class="stat-label">Skills listed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">3.2k</div>
+                <div class="stat-label">Swaps completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">
+                    4.8
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><path d="M12 2l2.9 6.6L22 9.3l-5 4.7L18.2 21 12 17.4 5.8 21 7 14l-5-4.7 7.1-.7z" /></svg>
+                </div>
+                <div class="stat-label">Average rating</div>
+            </div>
+        </div>
+        <div class="preview-wrap" data-reveal>
+            <div class="preview-card">
+                <div class="preview-sidebar">
+                    <div class="avatar-dot"></div>
+                    <div class="skel-line w-70"></div>
+                    <div class="skel-line w-50"></div>
+                    <div class="skel-line w-60"></div>
+                    <div class="skel-line w-40"></div>
+                </div>
+                <div class="preview-main">
+                    <div class="preview-topbar">
+                        <div class="skel-line w-35"></div>
+                        <div class="preview-pill"></div>
+                    </div>
+                    <div class="preview-tiles">
+                        <div class="tile">
+                            <div class="tile-num">3</div>
+                            <div class="tile-label">Skills you teach</div>
+                        </div>
+                        <div class="tile">
+                            <div class="tile-num">5</div>
+                            <div class="tile-label">Active matches</div>
+                        </div>
+                        <div class="tile">
+                            <div class="tile-num">2</div>
+                            <div class="tile-label">Swap requests</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-head text-center" data-reveal>
+                <span class="eyebrow">Community</span>
+                <h2>Real swaps, real growth</h2>
+                <p>A few of the thousands of skill trades happening on SkillSwap right now.</p>
+            </div>
+
+            <div class="testimonial-grid" data-reveal>
+                <article class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"I taught piano twice a week and finally learned conversational Spanish in return. Three months in and we're both still swapping."</p>
+                    <div class="testimonial-person">
+                        <img src="~/images/avatars/member-1.jpg" alt="Portrait of Amina, SkillSwap member" />
+                        <div>
+                            <div class="person-name">Amina R.</div>
+                            <div class="person-swap">Taught piano · Learned Spanish</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Found someone two streets away who wanted to learn woodworking. I picked up home baking. Didn't spend a cent on either."</p>
+                    <div class="testimonial-person">
+                        <img src="~/images/avatars/member-2.jpg" alt="Portrait of Daniel, SkillSwap member" />
+                        <div>
+                            <div class="person-name">Daniel K.</div>
+                            <div class="person-swap">Taught woodworking · Learned baking</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"The matching actually understood what I wanted to learn. Paired me with a video editor in my first week — now I teach her yoga."</p>
+                    <div class="testimonial-person">
+                        <img src="~/images/avatars/member-3.jpg" alt="Portrait of Priya, SkillSwap member" />
+                        <div>
+                            <div class="person-name">Priya S.</div>
+                            <div class="person-swap">Taught yoga · Learned video editing</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"I was skeptical about learning coding from a stranger for free. Six months later I built my first app, and I taught him photography."</p>
+                    <div class="testimonial-person">
+                        <img src="~/images/avatars/member-4.jpg" alt="Portrait of Marcus, SkillSwap member" />
+                        <div>
+                            <div class="person-name">Marcus T.</div>
+                            <div class="person-swap">Taught photography · Learned coding</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</header>

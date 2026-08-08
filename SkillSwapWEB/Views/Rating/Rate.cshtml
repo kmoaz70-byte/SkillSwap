@@ -1,0 +1,35 @@
+﻿@using Models.ViewModels
+@model RatingViewModel
+
+<div class="container mt-4 carousel-fade">
+    <div class="card shadow-sm" style="max-width:500px;margin:auto;">
+        <div class="card-body">
+            <h4 class="mb-3">Rate @Model.RatedUserName</h4>
+
+            <form asp-action="Rate" asp-controller="Rating" method="post">
+                <input type="hidden" asp-for="SwapRequestId" />
+                <input type="hidden" asp-for="RatedUserId" />
+                <input type="hidden" asp-for="RatedUserName" />
+
+                <div class="mb-3">
+                    <label class="form-label">Stars</label>
+                    <div>
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <label class="me-2">
+                                <input type="radio" asp-for="Stars" value="@i" /> @i
+                            </label>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Comment" class="form-label"></label>
+                    <textarea asp-for="Comment" class="form-control" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Rating</button>
+            </form>
+        </div>
+    </div>
+</div>

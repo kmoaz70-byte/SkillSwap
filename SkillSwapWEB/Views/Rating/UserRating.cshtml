@@ -1,0 +1,25 @@
+﻿@using Models.Models
+@model IEnumerable<Rating>
+
+<div class="container mt-4">
+    <h3>Ratings</h3>
+    <p>Average Rating: @ViewBag.AverageRating.ToString("0.0") / 5 (@Model.Count() reviews)</p>
+
+    @if (!Model.Any())
+    {
+        <p>No ratings yet.</p>
+    }
+    else
+    {
+        foreach (var rating in Model)
+        {
+            <div class="card mb-2">
+                <div class="card-body">
+                    <strong>@rating.Rater.FullName</strong> — @rating.Stars / 5
+                    <p class="mb-0">@rating.Comment</p>
+                    <small class="text-muted">@rating.CreatedAt.ToShortDateString()</small>
+                </div>
+            </div>
+        }
+    }
+</div>

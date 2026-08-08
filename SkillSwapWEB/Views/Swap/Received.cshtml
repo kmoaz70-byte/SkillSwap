@@ -1,0 +1,61 @@
+﻿@using Models.Enums
+@using Models.ViewModels
+@model IEnumerable<SwapRequestDisplayViewModel>
+<div class="container mt-4 fade-in">
+<h2>Received Requests</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>They Offer</th>
+            <th>They Want</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.OtherUserName</td>
+                <td>@r.TheirSkillName</td>
+                <td>@r.MySkillName</td>
+                <td>@r.Message</td>
+                <td>@r.Status</td>
+                <td>
+                    @if (r.Status == SwapStatus.Pending)
+                    {
+                        <form asp-controller="Swap" asp-action="Accept" asp-route-id="@r.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-accept">Accept</button>
+                        </form>
+                        <form asp-controller="Swap" asp-action="Reject" asp-route-id="@r.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-reject">Reject</button>
+                        </form>
+                    }
+                    @if (r.Status == SwapStatus.Accepted)
+                    {
+                        <form asp-controller="Swap" asp-action="MarkComplete" asp-route-id="@r.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-complete">Mark as Completed</button>
+                        </form>
+                    }
+
+                    @if (r.Status == SwapStatus.Completed)
+                    {
+                        <a asp-controller="Rating" asp-action="Rate" asp-route-swapRequestId="@r.Id" class="btn btn-sm btn-view">Rate</a>
+                    }
+                    <a asp-controller="Message" asp-action="Chat" asp-route-otherUserId="@r.OtherUserId" class="btn btn-sm btn-message">
+                        Message
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

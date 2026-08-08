@@ -1,0 +1,40 @@
+﻿@using Models.ViewModels
+@model PublicProfileViewModel
+
+@{
+    ViewData["Title"] = Model.FullName + "'s Profile";
+}
+
+<div class="container mt-4 fade-in">
+    <h2 class ="page-title">@Model.FullName's Profile</h2>
+
+    <div class="card">
+        <div class="card-body">
+            @if (!string.IsNullOrEmpty(Model.ProfilePicturePath))
+            {
+                <img src="@Model.ProfilePicturePath" alt="Profile Picture" class="rounded-circle mb-3" width="120" height="120" />
+            }
+            else
+            {
+                <p class="text-muted">No profile picture uploaded.</p>
+            }
+
+            <dl class="row">
+                <dt class="col-sm-3">Full Name</dt>
+                <dd class="col-sm-9">@Model.FullName</dd>
+
+                <dt class="col-sm-3">Bio</dt>
+                <dd class="col-sm-9">@(string.IsNullOrEmpty(Model.Bio) ? "Not set" : Model.Bio)</dd>
+
+                <dt class="col-sm-3">Location</dt>
+                <dd class="col-sm-9">@(string.IsNullOrEmpty(Model.Location) ? "Not set" : Model.Location)</dd>
+            </dl>
+        </div>
+        @if (User.Identity!.IsAuthenticated && Model.UserId != User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value)
+        {
+            <a asp-controller="Message" asp-action="Chat" asp-route-otherUserId="@Model.UserId" class="btn btn-outline-primary">
+                Message
+            </a>
+        }
+    </div>
+</div>

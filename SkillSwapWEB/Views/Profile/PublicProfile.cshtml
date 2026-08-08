@@ -1,0 +1,12 @@
+﻿@if (User.Identity!.IsAuthenticated && Model.Id != User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value)
+{
+    <a asp-controller="Message" asp-action="Chat" asp-route-otherUserId="@Model.Id" class="btn btn-outline-primary">
+        Message
+    </a>
+}
+@if (User.Identity!.IsAuthenticated && Model.UserId != User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value)
+{
+    <a asp-controller="Message" asp-action="Chat" asp-route-otherUserId="@Model.UserId" class="btn btn-outline-primary">
+        Message
+    </a>
+}

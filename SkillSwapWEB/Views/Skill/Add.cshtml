@@ -1,0 +1,43 @@
+﻿@model Models.ViewModels.UserSkillViewModel
+@{
+    ViewData["Title"] = "Add Skill";
+}
+<div class="container mt-4 fade-in">
+<h2>Add Skill</h2>
+
+<form asp-action="Add" method="post">
+    <div class="mb-3">
+        <label class="form-label">Skill</label>
+        <select asp-for="SkillId" class="form-select"
+                asp-items="@(new SelectList(Model.AvailableSkills, "Id", "Name"))">
+            <option value="">-- Select a Skill --</option>
+        </select>
+        <span asp-validation-for="SkillId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Type</label>
+        <select asp-for="SkillType" class="form-select"
+                asp-items="Html.GetEnumSelectList<Models.Enums.SkillType>()">
+        </select>
+        <span asp-validation-for="SkillType" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Proficiency Level</label>
+        <select asp-for="ProficiencyLevel" class="form-select"
+                asp-items="Html.GetEnumSelectList<Models.Enums.ProficiencyLevel>()">
+        </select>
+        <span asp-validation-for="ProficiencyLevel" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Additional Info</label>
+        <textarea asp-for="AdditionalInfo" class="form-control" rows="3"
+                  placeholder="e.g. I can teach beginner-level guitar on weekends"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-action="Index" class="btn btn-sm btn-reject">Cancel</a>
+</form>
+</div>

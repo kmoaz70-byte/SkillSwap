@@ -1,0 +1,35 @@
+﻿@model Models.ViewModels.NotificationViewModel
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle position-relative" href="#" role="button" data-bs-toggle="dropdown">
+        <i class="bi bi-bell"></i>
+        @if (Model.UnreadCount > 0)
+        {
+            <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+                @Model.UnreadCount
+            </span>
+        }
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end p-2" style="width: 320px;">
+        @if (!Model.Notifications.Any())
+        {
+            <li class="text-center text-muted py-2">No notifications</li>
+        }
+        else
+        {
+            foreach (var n in Model.Notifications)
+            {
+                <li>
+                    <a class="dropdown-item @(n.IsRead ? "" : "fw-bold")" href="/Notification/MarkAsRead?id=@n.Id&returnUrl=@Uri.EscapeDataString(n.Link ?? "/")">
+                        @n.Message
+                        <div class="small text-muted">@n.CreatedAt.ToString("MMM dd, HH:mm")</div>
+                    </a>
+                </li>
+            }
+            <li><hr class="dropdown-divider"></li>
+            <li class="text-center">
+                <a href="/Notification/MarkAllAsRead" class="small">Mark all as read</a>
+            </li>
+        }
+    </ul>
+</li>
